@@ -3,6 +3,8 @@ package com.packageHut.api.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "t_product")
 @Builder
@@ -21,11 +23,12 @@ public class Product {
     private Shop shop;
     private String product_name;
     private String product_description;
-    private String product_price;
+    private BigDecimal product_price;
     private String product_image;
     private String product_category;
     private String product_quantity;
     private String product_status;
     private String product_created_at;
     private String product_updated_at;
+
 }

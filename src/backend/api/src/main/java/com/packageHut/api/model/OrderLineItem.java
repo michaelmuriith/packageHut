@@ -3,13 +3,15 @@ package com.packageHut.api.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "t_order_line_items")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderLineItems {
+public class OrderLineItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,5 +25,9 @@ public class OrderLineItems {
     private Product product;
 
     private int quantity;
-    private double price;
+    private BigDecimal price;
+
+    private BigDecimal itemTotal;
+
+
 }

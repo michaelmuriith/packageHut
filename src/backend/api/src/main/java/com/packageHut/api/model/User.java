@@ -39,4 +39,7 @@ public class User {
     @JoinColumn(name = "shopId")
     private Shop shop;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
 }

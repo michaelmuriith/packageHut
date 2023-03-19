@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 13306
+      DB_NAME: packageHut
+      DB_USER: root
+      DB_PASSWORD: packageHut
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: packageHut
+      MYSQL_USER: root
+      MYSQL_PASSWORD: packageHut
+      MYSQL_ROOT_PASSWORD: packageHut
+
