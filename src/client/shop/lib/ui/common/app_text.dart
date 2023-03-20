@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 const TextStyle ktsTitle = TextStyle(
-  fontSize: 16,
+  fontSize: 20,
   fontWeight: FontWeight.w600,
   color: kcPrimaryColorDark,
 );
 
 const TextStyle ktsSubtitle = TextStyle(
-  fontSize: 14,
+  fontSize: 16,
   fontFamily: 'Montserrat',
-  fontWeight: FontWeight.w100,
+  fontWeight: FontWeight.w300,
   color: kcMediumGrey,
 );
 
@@ -26,3 +26,6 @@ const TextStyle ktsBodyBold = TextStyle(
   fontWeight: FontWeight.w600,
   color: kcMediumGrey,
 );
+
+const TextStyle optionStyle =
+    TextStyle(fontSize: 30, fontWeight: FontWeight.bold);

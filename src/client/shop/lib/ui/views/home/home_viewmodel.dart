@@ -1,36 +1,28 @@
-import 'package:shop/app/app.bottomsheets.dart';
-import 'package:shop/app/app.dialogs.dart';
-import 'package:shop/app/app.locator.dart';
-import 'package:shop/ui/common/app_strings.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
+
+import '../../common/app_text.dart';
+import '../cart/cart_view.dart';
+import '../favourite/favourite_view.dart';
+import '../main/main_view.dart';
+import '../profile/profile_view.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
+  int _selectedIndex = 0;
+  int get selectedIndex => _selectedIndex;
+  get onItemTapped => _onItemTapped;
 
-  String get counterLabel => 'Counter is: $_counter';
+  Widget get widgetOptions => _widgetOptions.elementAt(_selectedIndex);
 
-  int _counter = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    MainView(),
+    CartView(),
+    FavouriteView(),
+    ProfileView(),
+  ];
 
-  void incrementCounter() {
-    _counter++;
-    rebuildUi();
-  }
-
-  void showDialog() {
-    _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
-      title: 'Stacked Rocks!',
-      description: 'Give stacked $_counter stars on Github',
-    );
-  }
-
-  void showBottomSheet() {
-    _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
-      description: ksHomeBottomSheetDescription,
-    );
+  void _onItemTapped(int index) {
+    _selectedIndex = index;
+    notifyListeners();
   }
 }

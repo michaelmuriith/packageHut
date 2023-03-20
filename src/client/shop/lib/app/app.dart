@@ -4,19 +4,35 @@ import 'package:shop/ui/views/home/home_view.dart';
 import 'package:shop/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:shop/ui/views/on_boarding/on_boarding_view.dart';
+import 'package:shop/ui/views/login/login_view.dart';
+import 'package:shop/ui/views/register/register_view.dart';
+import 'package:shop/services/authentication_service.dart';
+import 'package:shop/ui/views/profile/profile_view.dart';
+import 'package:shop/ui/views/main/main_view.dart';
+import 'package:shop/ui/views/cart/cart_view.dart';
+import 'package:shop/ui/views/favourite/favourite_view.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
     MaterialRoute(page: HomeView),
     MaterialRoute(page: StartupView),
-    // @stacked-route
+    MaterialRoute(page: OnBoardingView),
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: RegisterView),
+    MaterialRoute(page: ProfileView),
+    MaterialRoute(page: MainView),
+    MaterialRoute(page: CartView),
+    MaterialRoute(page: FavouriteView),
+// @stacked-route
   ],
   dependencies: [
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
-    // @stacked-service
+    LazySingleton(classType: AuthenticationService),
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),

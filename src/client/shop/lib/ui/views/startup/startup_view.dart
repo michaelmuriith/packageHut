@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:shop/ui/common/ui_helpers.dart';
 
+import '../../common/app_colors.dart';
 import 'startup_viewmodel.dart';
 
 class StartupView extends StackedView<StartupViewModel> {
@@ -15,6 +16,7 @@ class StartupView extends StackedView<StartupViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -40,7 +42,7 @@ class StartupView extends StackedView<StartupViewModel> {
                   width: 16,
                   height: 16,
                   child: CircularProgressIndicator(
-                    color: Colors.black,
+                    color: kcPrimaryColor,
                     strokeWidth: 6,
                   ),
                 )
