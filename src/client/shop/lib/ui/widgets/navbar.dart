@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Navbar extends StatelessWidget {
-  const Navbar({super.key});
+class Navbar extends StatelessWidget implements PreferredSizeWidget {
+  const Navbar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
+    return SizedBox(
+      height: kToolbarHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -34,4 +34,7 @@ class Navbar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

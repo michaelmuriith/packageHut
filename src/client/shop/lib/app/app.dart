@@ -12,6 +12,8 @@ import 'package:shop/ui/views/profile/profile_view.dart';
 import 'package:shop/ui/views/main/main_view.dart';
 import 'package:shop/ui/views/cart/cart_view.dart';
 import 'package:shop/ui/views/favourite/favourite_view.dart';
+import 'package:shop/ui/views/vendorshop/vendorshop_view.dart';
+import 'package:shop/ui/views/product/product_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -25,6 +27,8 @@ import 'package:shop/ui/views/favourite/favourite_view.dart';
     MaterialRoute(page: MainView),
     MaterialRoute(page: CartView),
     MaterialRoute(page: FavouriteView),
+    MaterialRoute(page: VendorshopView),
+    MaterialRoute(page: ProductView),
 // @stacked-route
   ],
   dependencies: [

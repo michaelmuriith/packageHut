@@ -19,18 +19,14 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Navbar(),
-            Expanded(child: viewModel.widgetOptions),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: const Navbar(),
+        body: viewModel.widgetOptions,
+        bottomNavigationBar: BottomNav(
+          onItemTapped: viewModel.onItemTapped,
+          selectedIndex: viewModel.selectedIndex,
         ),
-      ),
-      bottomNavigationBar: BottomNav(
-        onItemTapped: viewModel.onItemTapped,
-        selectedIndex: viewModel.selectedIndex,
       ),
     );
   }
