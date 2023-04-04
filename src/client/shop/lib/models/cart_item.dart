@@ -8,6 +8,7 @@ class CartItem {
     required this.id,
     required this.name,
     required this.price,
-    this.quantity = 1, required imageUrl,
+    this.quantity = 1,
+    required imageUrl,
   });
 }

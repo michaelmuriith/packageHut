@@ -4,6 +4,7 @@ import 'package:shop/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:shop/services/authentication_service.dart';
 import 'package:shop/services/cart_service.dart';
+import 'package:shop/services/firestore_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +15,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<CartService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<FirestoreService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -22,6 +24,7 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterAuthenticationService();
   getAndRegisterCartService();
+  getAndRegisterFirestoreService();
 // @stacked-mock-register
 }
 
@@ -86,6 +89,13 @@ MockCartService getAndRegisterCartService() {
   _removeRegistrationIfExists<CartService>();
   final service = MockCartService();
   locator.registerSingleton<CartService>(service);
+  return service;
+}
+
+MockFirestoreService getAndRegisterFirestoreService() {
+  _removeRegistrationIfExists<FirestoreService>();
+  final service = MockFirestoreService();
+  locator.registerSingleton<FirestoreService>(service);
   return service;
 }
 // @stacked-mock-create

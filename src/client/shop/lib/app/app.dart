@@ -15,6 +15,7 @@ import 'package:shop/ui/views/favourite/favourite_view.dart';
 import 'package:shop/ui/views/vendorshop/vendorshop_view.dart';
 import 'package:shop/ui/views/product/product_view.dart';
 import 'package:shop/services/cart_service.dart';
+import 'package:shop/services/firestore_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -39,6 +40,7 @@ import 'package:shop/services/cart_service.dart';
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: AuthenticationService),
     LazySingleton(classType: CartService),
+    LazySingleton(classType: FirestoreService),
 // @stacked-service
   ],
   bottomsheets: [

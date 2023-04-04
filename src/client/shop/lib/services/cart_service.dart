@@ -5,24 +5,23 @@ class CartService {
 
   List<CartItem> get items => _items;
 
-void addToCart(product) {
-  final existingCartItemIndex = _items.indexWhere((item) => item.id == product.id);
+  void addToCart(product) {
+    final existingCartItemIndex =
+        _items.indexWhere((item) => item.id == product.id);
 
-  if (existingCartItemIndex >= 0) {
-    _items[existingCartItemIndex].quantity++;
-  } else {
-    final cartItem = CartItem(
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      imageUrl: product.imageUrl,
-      quantity: 1,
-    );
-    _items.add(cartItem);
+    if (existingCartItemIndex >= 0) {
+      _items[existingCartItemIndex].quantity++;
+    } else {
+      final cartItem = CartItem(
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        quantity: 1,
+      );
+      _items.add(cartItem);
+    }
   }
-}
-
-
 
   void updateItem(CartItem item) {
     final index = _items.indexWhere((element) => element.id == item.id);

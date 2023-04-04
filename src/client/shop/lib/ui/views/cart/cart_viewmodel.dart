@@ -9,14 +9,13 @@ class CartViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _cartService = locator<CartService>();
 
-
   get cartItems => _cartService.items;
 
   get totalPrice => _totalPrice;
 
   // The total price of all items in the cart
-  double get _totalPrice =>
-      _cartService.items.fold(0, (sum, item) => sum + item.price * item.quantity);
+  double get _totalPrice => _cartService.items
+      .fold(0, (sum, item) => sum + item.price * item.quantity);
 
   // Decrements the quantity of an item in the cart
   void decrementQuantity(CartItem item) {

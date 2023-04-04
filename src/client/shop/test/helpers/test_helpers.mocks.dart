@@ -8,8 +8,10 @@ import 'dart:ui' as _i5;
 
 import 'package:flutter/material.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:shop/models/cart_item.dart' as _i8;
 import 'package:shop/services/authentication_service.dart' as _i6;
 import 'package:shop/services/cart_service.dart' as _i7;
+import 'package:shop/services/firestore_service.dart' as _i9;
 import 'package:stacked_services/stacked_services.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -629,9 +631,63 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthenticationService extends _i1.Mock
-    implements _i6.AuthenticationService {}
+    implements _i6.AuthenticationService {
+  @override
+  _i4.Future<bool> isUserLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isUserLoggedIn,
+          [],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+}
 
 /// A class which mocks [CartService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockCartService extends _i1.Mock implements _i7.CartService {}
+class MockCartService extends _i1.Mock implements _i7.CartService {
+  @override
+  List<_i8.CartItem> get items => (super.noSuchMethod(
+        Invocation.getter(#items),
+        returnValue: <_i8.CartItem>[],
+        returnValueForMissingStub: <_i8.CartItem>[],
+      ) as List<_i8.CartItem>);
+  @override
+  void addToCart(dynamic product) => super.noSuchMethod(
+        Invocation.method(
+          #addToCart,
+          [product],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void updateItem(_i8.CartItem? item) => super.noSuchMethod(
+        Invocation.method(
+          #updateItem,
+          [item],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void addItem(_i8.CartItem? item) => super.noSuchMethod(
+        Invocation.method(
+          #addItem,
+          [item],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void removeItem(_i8.CartItem? item) => super.noSuchMethod(
+        Invocation.method(
+          #removeItem,
+          [item],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [FirestoreService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirestoreService extends _i1.Mock implements _i9.FirestoreService {}

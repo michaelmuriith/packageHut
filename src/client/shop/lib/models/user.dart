@@ -1,16 +1,32 @@
 class User {
-  String id;
-  String firstName;
-  String lastName;
+  String? id;
+  String fullName;
   String imageUrl;
   String email;
+  String password;
 
   User({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
+    this.id,
+    required this.fullName,
     required this.imageUrl,
     required this.email,
-    required String name,
+    required this.password,
   });
+
+  User.fromData(Map<String, dynamic> data)
+      : id = data['id'],
+        fullName = data['fullName'],
+        imageUrl = data['imageUrl'],
+        email = data['email'],
+        password = data['password'];
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'fullName': fullName,
+      'imageUrl': imageUrl,
+      'email': email,
+      'password': password,
+    };
+  }
 }

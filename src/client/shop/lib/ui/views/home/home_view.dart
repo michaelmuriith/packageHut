@@ -17,7 +17,7 @@ class HomeView extends StackedView<HomeViewModel> {
     return SafeArea(
       child: Scaffold(
         drawer: const MyDrawer(),
-        appBar:  AppBar(
+        appBar: AppBar(
           title: const Text('My App'),
           leading: IconButton(
             icon: const Icon(Icons.menu),
