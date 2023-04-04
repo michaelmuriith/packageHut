@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shop/ui/common/app_colors.dart';
-
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/bottom_nav.dart';
-import '../../widgets/navbar.dart';
+import '../../widgets/drawer.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
-
-  get selectedIndex => null;
 
   @override
   Widget builder(
@@ -21,7 +16,16 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return SafeArea(
       child: Scaffold(
-        appBar: const Navbar(),
+        drawer: const MyDrawer(),
+        appBar:  AppBar(
+          title: const Text('My App'),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
         body: viewModel.widgetOptions,
         bottomNavigationBar: BottomNav(
           onItemTapped: viewModel.onItemTapped,

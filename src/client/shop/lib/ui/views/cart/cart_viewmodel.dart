@@ -1,86 +1,53 @@
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../../app/app.locator.dart';
+import '../../../models/cart_item.dart';
+import '../../../services/cart_service.dart';
 
 class CartViewModel extends BaseViewModel {
-  double _total = 0.0;
+  final _navigationService = locator<NavigationService>();
+  final _cartService = locator<CartService>();
 
-  double get total => _total = subtotal + shipping;
 
-  double _subtotal = 0.0;
-  double get subtotal => () {
-        _subtotal = 0.0;
-        for (var element in _cart) {
-          _subtotal += element.price * element.quantity;
-        }
-        return _subtotal;
-      }();
+  get cartItems => _cartService.items;
 
-  double _shipping = 0.0;
-  double get shipping => () {
-        _shipping = 0.0;
-        for (var element in _cart) {
-          _shipping += element.price * element.quantity * 0.1;
-        }
-        return _shipping;
-      }();
+  get totalPrice => _totalPrice;
 
-  get cart => _cart;
+  // The total price of all items in the cart
+  double get _totalPrice =>
+      _cartService.items.fold(0, (sum, item) => sum + item.price * item.quantity);
 
-  final List<CartItem> _cart = [
-    CartItem(
-      id: '1',
-      name: 'Apple',
-      price: 1.99,
-      quantity: 1,
-      image:
-          'https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?size=626&ext=jpg&ga=GA1.1.799305140.1679347712&semt=sph',
-    ),
-    CartItem(
-      id: '2',
-      name: 'Banana',
-      price: 1.99,
-      quantity: 1,
-      image:
-          'https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?size=626&ext=jpg&ga=GA1.1.799305140.1679347712&semt=sph',
-    ),
-    CartItem(
-      id: '3',
-      name: 'Orange',
-      price: 1.99,
-      quantity: 1,
-      image:
-          'https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?size=626&ext=jpg&ga=GA1.1.799305140.1679347712&semt=sph',
-    ),
-    CartItem(
-      id: '4',
-      name: 'Grapes',
-      price: 1.99,
-      quantity: 1,
-      image:
-          'https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?size=626&ext=jpg&ga=GA1.1.799305140.1679347712&semt=sph',
-    ),
-    CartItem(
-      id: '5',
-      name: 'Pineapple',
-      price: 1.99,
-      quantity: 1,
-      image:
-          'https://img.freepik.com/free-photo/basket-full-vegetables_1112-316.jpg?size=626&ext=jpg&ga=GA1.1.799305140.1679347712&semt=sph',
-    ),
-  ];
-}
+  // Decrements the quantity of an item in the cart
+  void decrementQuantity(CartItem item) {
+    if (item.quantity > 1) {
+      item.quantity--;
+      _cartService.updateItem(item);
+      notifyListeners();
+    }
+  }
 
-class CartItem {
-  final String id;
-  final String name;
-  final double price;
-  final int quantity;
-  final String image;
+  // Increments the quantity of an item in the cart
+  void incrementQuantity(CartItem item) {
+    item.quantity++;
+    _cartService.updateItem(item);
+    notifyListeners();
+  }
 
-  CartItem({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.quantity,
-    required this.image,
-  });
+  // Adds an item to the cart
+  void addToCart(CartItem item) {
+    _cartService.addItem(item);
+    notifyListeners();
+  }
+
+  // Removes an item from the cart
+  void removeFromCart(CartItem item) {
+    _cartService.removeItem(item);
+    notifyListeners();
+  }
+
+  // Navigates to the checkout page
+  void navigateToCheckout() {
+    _navigationService.navigateTo('/checkout');
+  }
 }

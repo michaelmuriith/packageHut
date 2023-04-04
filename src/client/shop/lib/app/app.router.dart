@@ -105,6 +105,10 @@ class StackedRouter extends _i1.RouterBase {
       Routes.productView,
       page: _i12.ProductView,
     ),
+    _i1.RouteDef(
+      Routes.loginView,
+      page: _i5.LoginView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
@@ -508,4 +512,5 @@ extension NavigatorStateExtension on _i14.NavigationService {
         parameters: parameters,
         transition: transition);
   }
+
 }

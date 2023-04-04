@@ -61,4 +61,3 @@ final List<Product> products = [
     category: 'footwear',
   ),
 ];
-

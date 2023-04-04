@@ -13,7 +13,6 @@ class RegisterView extends StackedView<RegisterViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
       ),

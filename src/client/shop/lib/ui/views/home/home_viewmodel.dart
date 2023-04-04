@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../common/app_text.dart';
 import '../cart/cart_view.dart';
 import '../favourite/favourite_view.dart';
 import '../main/main_view.dart';

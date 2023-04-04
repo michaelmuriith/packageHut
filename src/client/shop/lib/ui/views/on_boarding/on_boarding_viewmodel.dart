@@ -16,6 +16,6 @@ class OnBoardingViewModel extends BaseViewModel {
   }
 
   navigateToHome() {
-    _navigationService.replaceWithHomeView();
+    _navigationService.replaceWith(Routes.loginView);
   }
 }

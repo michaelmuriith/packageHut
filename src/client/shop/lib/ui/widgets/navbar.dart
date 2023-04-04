@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
-  const Navbar({Key? key}) : super(key: key);
+  final Function() onPressed;
+  const Navbar({Key? key, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
             icon: SvgPicture.asset(
               'assets/svg/Menu.svg',
             ),
-            onPressed: () {},
+            onPressed: onPressed,
           ),
           const Text(
             'packageHut',

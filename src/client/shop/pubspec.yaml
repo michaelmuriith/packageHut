@@ -39,6 +39,7 @@ dependencies:
   stacked_services: ^0.9.9
   flutter_svg: ^2.0.4
   dots_indicator: ^2.1.0
+  firebase_core: ^2.9.0
 
 dev_dependencies:
   flutter_test:
